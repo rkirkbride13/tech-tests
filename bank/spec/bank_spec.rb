@@ -88,4 +88,17 @@ RSpec.describe Bank do
     expect(bank.print_statement).to eq "date || credit || debit || balance\n02/01/2023 || || 25.00 || -35.00\n01/01/2023 || || 10.00 || -10.00"
   end
 
+  it "can print a statement after several deposits and withdrawls" do
+    bank = Bank.new
+    transaction_1 = double :transaction, amount: 1000, date: "10/01/2023"
+    transaction_2 = double :transaction, amount: 2000, date: "13/01/2023"
+    transaction_3 = double :transaction, amount: -500, date: "14/01/2023"
+    transaction_4 = double :transaction, amount: -700, date: "15/01/2023"
+    bank.add_transaction(transaction_1)
+    bank.add_transaction(transaction_2)
+    bank.add_transaction(transaction_3)
+    bank.add_transaction(transaction_4)
+    expect(bank.print_statement).to eq "date || credit || debit || balance\n15/01/2023 || || 700.00 || 1800.00\n14/01/2023 || || 500.00 || 2500.00\n13/01/2023 || 2000.00 || || 3000.00\n10/01/2023 || 1000.00 || || 1000.00"
+  end
+
 end
