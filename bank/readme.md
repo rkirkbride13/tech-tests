@@ -5,13 +5,13 @@ It is written using Ruby and test-driven with the RSpec framework
 
 **To run this code locally:**  
 
-    $ git clone git@github.com:[USERNAME]/bank.git
+    $ git clone git@github.com:[USERNAME]/tech-test.git
     $ cd bank
     
 **To run the test suite**
    
 
-    $ git clone git@github.com:[USERNAME]/bank.git
+    $ git clone git@github.com:[USERNAME]/tech-test.git
     $ cd bank
     $ rspec
 
