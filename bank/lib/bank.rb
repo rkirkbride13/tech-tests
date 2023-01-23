@@ -10,14 +10,17 @@ class Bank
     return @balance
   end
 
-  def deposit_money(funds, date)
-    @balance += funds
-    @transactions << "#{date} || #{funds}.00 || || #{@balance}0"
+  def add_transaction(transaction)
+    @balance += transaction.amount
+    format_transaction(transaction)
   end
 
-  def withdraw_money(funds, date)
-    @balance -= funds
-    @transactions << "#{date} || || #{funds}.00 || #{@balance}0"
+  def format_transaction(transaction)
+    if transaction.amount > 0
+      @transactions << "#{transaction.date} || #{transaction.amount}.00 || || #{@balance}0"
+    else
+      @transactions << "#{transaction.date} || || #{-transaction.amount}.00 || #{@balance}0"
+    end
   end
 
   def print_statement
