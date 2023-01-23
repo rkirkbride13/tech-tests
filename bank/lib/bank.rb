@@ -12,6 +12,7 @@ class Bank
 
   def add_transaction(transaction)
     @balance += transaction.amount
+    if @balance < 0 then fail "Insufficienet funds" end
     format_transaction(transaction)
   end
 
