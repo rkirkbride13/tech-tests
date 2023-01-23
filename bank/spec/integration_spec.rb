@@ -55,15 +55,17 @@ RSpec.describe Bank do
     expect(bank.check_balance).to eq 2500.00
   end
 
-  xit "can print a statement after a single deposit" do
+  it "can print a statement after a single deposit" do
     bank = Bank.new
-    bank.deposit_money(1, "01/01/2023")
+    transaction = Transaction.new(1, "01/01/2023")
+    bank.add_transaction(transaction)
     expect(bank.print_statement).to eq "date || credit || debit || balance\n01/01/2023 || 1.00 || || 1.00"
   end
 
-  xit "can print a statement after a single withdrawl" do
+  it "can print a statement after a single withdrawl" do
     bank = Bank.new
-    bank.withdraw_money(1, "01/01/2023")
+    transaction = Transaction.new(-1, "01/01/2023")
+    bank.add_transaction(transaction)
     expect(bank.print_statement).to eq "date || credit || debit || balance\n01/01/2023 || || 1.00 || -1.00"
   end
 
