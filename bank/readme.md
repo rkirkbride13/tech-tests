@@ -7,12 +7,11 @@ It is written using Ruby and test-driven with the RSpec framework
 
     $ git clone git@github.com:[USERNAME]/tech-test.git
     $ cd bank
+    $ gem install bundler
+    $ bundle install
     
-**To run the test suite**
-   
+**To run the test suite, follow above and then**
 
-    $ git clone git@github.com:[USERNAME]/tech-test.git
-    $ cd bank
     $ rspec
 
 ## Specification
@@ -39,6 +38,10 @@ date || credit || debit || balance
 10/01/2023 || 1000.00 || || 1000.00
 ```
 
-## Self-assessment
+### Approach
 
-Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
+I initially modelled this as a single class (Bank class) program in which a depost / withdrawal could be made, before then splitting it into two classes (Bank and Transaction classes). This was because I wanted to seperate the responsibility of the transactions from the bank, which should simply handles transactions by taking instances of them.
+
+I test drove the single class first, starting simple with single deposits or withdrawals, before adding multiple depsoits or withdrawals and finally multiple deposits and withdrawals. Once the logic was test-driven, I test-drove the formatting in a similar way.
+
+I then added in unit tests so that I could be satisfied my classes were working independently of one another
