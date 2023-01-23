@@ -15,9 +15,10 @@ RSpec.describe Bank do
     expect(bank.check_balance).to eq 1.00
   end
 
-  xit "can withdraw money and check balance for that withdrawn value" do
+  it "can withdraw money and check balance for that withdrawn value" do
     bank = Bank.new
-    bank.withdraw_money(1, "01/01/2023")
+    transaction = Transaction.new(-1, "01/01/2023")
+    bank.add_transaction(transaction)
     expect(bank.check_balance).to eq -1.00
   end
 
