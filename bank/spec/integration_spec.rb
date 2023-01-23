@@ -22,19 +22,25 @@ RSpec.describe Bank do
     expect(bank.check_balance).to eq -1.00
   end
 
-  xit "can deposit money several times and check balance for total balance value" do
+  it "can deposit money several times and check balance for total balance value" do
     bank = Bank.new
-    bank.deposit_money(1, "01/01/2023")
-    bank.deposit_money(2, "01/01/2023")
-    bank.deposit_money(9, "01/01/2023")
+    transaction_1 = Transaction.new(1, "01/01/2023")
+    transaction_2 = Transaction.new(2, "01/01/2023")
+    transaction_3 = Transaction.new(9, "01/01/2023")
+    bank.add_transaction(transaction_1)
+    bank.add_transaction(transaction_2)
+    bank.add_transaction(transaction_3)
     expect(bank.check_balance).to eq 12.00
   end
 
-  xit "can withdraw money several times and check balance for total balance value" do
+  it "can withdraw money several times and check balance for total balance value" do
     bank = Bank.new
-    bank.withdraw_money(1, "01/01/2023")
-    bank.withdraw_money(2, "01/01/2023")
-    bank.withdraw_money(11, "01/01/2023")
+    transaction_1 = Transaction.new(-1, "01/01/2023")
+    transaction_2 = Transaction.new(-2, "01/01/2023")
+    transaction_3 = Transaction.new(-11, "01/01/2023")
+    bank.add_transaction(transaction_1)
+    bank.add_transaction(transaction_2)
+    bank.add_transaction(transaction_3)
     expect(bank.check_balance).to eq -14.00
   end
 
