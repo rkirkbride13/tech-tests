@@ -3,6 +3,7 @@ class Bank
   def initialize
     @balance = 0.00
     @transactions = []
+    @statement = ""
   end
 
   def check_balance
@@ -27,7 +28,6 @@ class Bank
   private
 
   def format_statement
-    @statement = ""
     @transactions << "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
       @statement += transaction + "\n"
