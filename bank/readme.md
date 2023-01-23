@@ -1,6 +1,6 @@
 # Bank tech test
 
-This is my attempt at a bank tech test. Transaction class instances (deposits / withdrawls) can be created and added to a Bank class, which can calculate the balance and print a statement.
+This is my attempt at a bank tech test. Transaction class instances (deposits / withdrawals) can be created and added to a Bank class, which can calculate the balance and print a statement.
 It is written using Ruby and test-driven with the RSpec framework
 
 **To run this code locally:**  

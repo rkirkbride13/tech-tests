@@ -12,7 +12,6 @@ class Bank
   def add_transaction(transaction)
     @balance += transaction.amount
     raise 'Insufficienet funds' if @balance.negative?
-
     format_transaction(transaction)
   end
 
@@ -34,7 +33,7 @@ class Bank
   def format_statement
     @transactions << 'date || credit || debit || balance'
     @transactions.reverse.each do |transaction|
-      @statement += transaction + "\n"
+      @statement += "#{transaction}\n"
     end
   end
 end
