@@ -15,16 +15,14 @@ class Bank
   end
 
   def format_transaction(transaction)
-    @transactions << if transaction.amount.positive?
-                       "#{transaction.date} || #{transaction.amount}.00 || || #{@balance}0\n"
-                     else
-                       "#{transaction.date} || || #{-transaction.amount}.00 || #{@balance}0\n"
-                     end
+    amount = transaction.amount
+    date = transaction.date
+    format_toggle = amount > 0 ? "#{amount}.00 ||" : "|| #{-amount}.00"
+    @transactions << "#{date} || #{format_toggle} || #{@balance}0\n"
   end
 
   def print_statement
     @transactions << "date || credit || debit || balance\n"
     return @transactions.reverse.join()[0..-2]
   end
-
 end
