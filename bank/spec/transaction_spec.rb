@@ -11,7 +11,7 @@ RSpec.describe Transaction do
     it 'is a deposit, with positive amount' do
       fake_date = double :date
       transaction = Transaction.new(1, fake_date)
-      expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
+      expect(fake_date).to receive(:now).and_return("23/01/2023")
       expect(transaction.amount).to eq 1
       expect(transaction.date).to eq '23/01/2023'
     end
@@ -19,7 +19,7 @@ RSpec.describe Transaction do
     it 'is a withdrawl, with negative amount' do
       fake_date = double :date
       transaction = Transaction.new(-1, fake_date)
-      expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
+      expect(fake_date).to receive(:now).and_return("23/01/2023")
       expect(transaction.amount).to eq(-1)
       expect(transaction.date).to eq '23/01/2023'
     end

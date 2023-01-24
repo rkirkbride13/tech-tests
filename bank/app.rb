@@ -6,11 +6,11 @@ require 'date'
 bank = Bank.new
 
 # Create some transactions and add them to the bank
-transaction1 = Transaction.new(1000, DateTime.now)
+transaction1 = Transaction.new(1000, DateTime)
 bank.add_transaction(transaction1)
-transaction2 = Transaction.new(2000, DateTime.now)
+transaction2 = Transaction.new(2000, DateTime)
 bank.add_transaction(transaction2)
-transaction3 = Transaction.new(-500, DateTime.now)
+transaction3 = Transaction.new(-500, DateTime)
 bank.add_transaction(transaction3)
 
 # Print the bank statement to the console
