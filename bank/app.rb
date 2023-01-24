@@ -15,5 +15,3 @@ bank.add_transaction(transaction3)
 
 # Print the bank statement to the console
 puts bank.print_statement
-p "--------"
-puts DateTime.now.strftime "%d/%m/%Y"
