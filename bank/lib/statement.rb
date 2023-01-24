@@ -1,18 +1,22 @@
 class Statement
-  def initialize
+  def initialize(account)
     @header = "date || credit || debit || balance\n"
+    @account = account
   end
 
-  # def format_transaction(transaction)
-  #   amount = transaction.amount
-  #   date = transaction.date
-  #   format_toggle = amount > 0 ? "#{amount}.00 ||" : "|| #{-amount}.00"
-  #   @transactions << "#{date} || #{format_toggle} || #{@balance}0\n"
-  # end
+  def format_statement
+    balance = 0
+    @account.transactions.map do |transaction|
+      amount = transaction.amount
+      date = transaction.format_date
+      format_toggle = amount > 0 ? "#{amount}.00 ||" : "|| #{-amount}.00"
+      "#{date} || #{format_toggle} || #{balance += amount}.00\n"
+    end
+  end
 
-  def print
-    @header
-    # return @transactions.reverse.join()[0..-2]
+  def print_statement
+    formatted_statement = format_statement << @header
+    return formatted_statement.reverse.join()[0..-2]
   end
 
 end

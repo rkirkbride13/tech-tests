@@ -10,6 +10,9 @@ class Transaction
 
   def date
     return @date.now
-    # formatted_date = @date.strftime "%d/%m/%Y"
+  end
+
+  def format_date
+    return self.date.strftime "%d/%m/%Y"
   end
 end

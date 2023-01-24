@@ -99,19 +99,20 @@ RSpec.describe Account do
     allow(fake_date).to receive(:now).and_return("23/01/2023")
     expect { account.add_transaction(transaction2) }.to raise_error 'Insufficienet funds'
   end
-end
-=begin
+
   context "printing a statement after a single deposit / withdrawal" do
-    it 'prints after a single deposit' do
+    xit 'prints after a single deposit' do
       account = Account.new
       fake_date = double :date
       transaction = Transaction.new(1, fake_date)
       expect(fake_date).to receive(:now).and_return("23/01/2023")
       account.add_transaction(transaction)
-      expect(account.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || 1.00 || || 1.00"
+      statement = Statement.new(account)
+
+      expect(statement.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || 1.00 || || 1.00"
     end
 
-    it 'prints after a single withdrawal' do
+    xit 'prints after a single withdrawal' do
       account = Account.new
       fake_date = double :date
       transaction1 = Transaction.new(10, fake_date)
@@ -122,37 +123,8 @@ end
       account.add_transaction(transaction2)
       expect(account.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || || 1.00 || 9.00\n23/01/2023 || 10.00 || || 10.00"
     end
-  end
 
-  context "several deposits / withdrawals can be made and the statement printed" do
-    it 'prints after a multiple deposits' do
-      account = Account.new
-      fake_date = double :date
-      transaction1 = Transaction.new(1, fake_date)
-      expect(fake_date).to receive(:now).and_return("23/01/2023")
-      transaction2 = Transaction.new(2, fake_date)
-      expect(fake_date).to receive(:now).and_return("23/01/2023")
-      account.add_transaction(transaction1)
-      account.add_transaction(transaction2)
-      expect(account.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || 2.00 || || 3.00\n23/01/2023 || 1.00 || || 1.00"
-    end
-
-    it 'prints after a multiple withdrawals' do
-      account = Account.new
-      fake_date = double :date
-      transaction1 = Transaction.new(45, fake_date)
-      expect(fake_date).to receive(:now).and_return("23/01/2023")
-      transaction2 = Transaction.new(-10, fake_date)
-      expect(fake_date).to receive(:now).and_return("23/01/2023")
-      transaction3 = Transaction.new(-25, fake_date)
-      expect(fake_date).to receive(:now).and_return("23/01/2023")
-      account.add_transaction(transaction1)
-      account.add_transaction(transaction2)
-      account.add_transaction(transaction3)
-      expect(account.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || || 25.00 || 10.00\n23/01/2023 || || 10.00 || 35.00\n23/01/2023 || 45.00 || || 45.00"
-    end
-
-    it 'prints the example transaction sequence' do
+    xit 'prints the example transaction sequence' do
       account = Account.new
       fake_date = double :date
       transaction1 = Transaction.new(1000, fake_date)
@@ -168,4 +140,3 @@ end
     end
   end
 end
-=end
