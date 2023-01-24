@@ -154,21 +154,7 @@
           1,
           141,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1
+          null
         ]
       },
       "/Users/robbiekirkbride/Desktop/Projects/tech-tests/bank/spec/integration_spec.rb": {
@@ -365,6 +351,45 @@
           null
         ]
       },
+      "/Users/robbiekirkbride/Desktop/Projects/tech-tests/bank/spec/statement_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/robbiekirkbride/Desktop/Projects/tech-tests/bank/lib/statement.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/robbiekirkbride/Desktop/Projects/tech-tests/bank/spec/transaction_spec.rb": {
         "lines": [
           1,
@@ -397,6 +422,6 @@
         ]
       }
     },
-    "timestamp": 1674568345
+    "timestamp": 1674568669
   }
 }
