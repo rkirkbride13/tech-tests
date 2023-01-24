@@ -1,17 +1,21 @@
-require_relative './lib/bank'
+require_relative './lib/account'
 require_relative './lib/transaction'
+require_relative './lib/statement'
 require 'date'
 
-# Create a bank
-bank = Bank.new
+# Create an instance of account class
+account = Account.new
 
-# Create some transactions and add them to the bank
+# Create some transaction instances and add them to the account
 transaction1 = Transaction.new(1000, DateTime)
-bank.add_transaction(transaction1)
+account.add_transaction(transaction1)
 transaction2 = Transaction.new(2000, DateTime)
-bank.add_transaction(transaction2)
+account.add_transaction(transaction2)
 transaction3 = Transaction.new(-500, DateTime)
-bank.add_transaction(transaction3)
+account.add_transaction(transaction3)
 
-# Print the bank statement to the console
-puts bank.print_statement
+# Create an instance of the statement class, initialized with the account
+statement = Statement.new(account)
+
+# Print the statement to the console
+puts statement.print_statement

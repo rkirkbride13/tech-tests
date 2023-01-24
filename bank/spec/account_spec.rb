@@ -5,7 +5,7 @@ RSpec.describe Account do
     it 'has an account balance of 0.00 and an empty transaction array' do
       account = Account.new
       expect(account.is_a?(Account)).to eq true
-      expect(account.check_balance).to eq 0.00
+      expect(account.latest_balance).to eq 0.00
     end
   end
 
@@ -14,7 +14,7 @@ RSpec.describe Account do
       account = Account.new
       transaction = double :transaction, amount: 1, date: '01/01/2023'
       account.add_transaction(transaction)
-      expect(account.check_balance).to eq 1.00
+      expect(account.latest_balance).to eq 1.00
     end
 
     it 'has a balance less than the initial deposit value' do
@@ -23,7 +23,7 @@ RSpec.describe Account do
       transaction2 = double :transaction, amount: -1, date: '01/01/2023'
       account.add_transaction(transaction1)
       account.add_transaction(transaction2)
-      expect(account.check_balance).to eq 9.00
+      expect(account.latest_balance).to eq 9.00
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe Account do
       account.add_transaction(transaction1)
       account.add_transaction(transaction2)
       account.add_transaction(transaction3)
-      expect(account.check_balance).to eq 12.00
+      expect(account.latest_balance).to eq 12.00
     end
 
     it 'can calculate the balance after several withdrawals' do
@@ -49,7 +49,7 @@ RSpec.describe Account do
       account.add_transaction(transaction2)
       account.add_transaction(transaction3)
       account.add_transaction(transaction4)
-      expect(account.check_balance).to eq 2.00
+      expect(account.latest_balance).to eq 2.00
     end
 
     it 'can calculate the balance after the example transaction sequence' do
@@ -60,7 +60,7 @@ RSpec.describe Account do
       account.add_transaction(transaction1)
       account.add_transaction(transaction2)
       account.add_transaction(transaction3)
-      expect(account.check_balance).to eq 2500.00
+      expect(account.latest_balance).to eq 2500.00
     end
   end
 
