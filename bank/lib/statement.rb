@@ -8,7 +8,7 @@ class Statement
     balance = 0
     @account.transactions.map do |transaction|
       amount = transaction.amount
-      date = transaction.format_date
+      date = transaction.date.strftime "%d/%m/%Y"
       format_toggle = amount > 0 ? "#{amount}.00 ||" : "|| #{-amount}.00"
       "#{date} || #{format_toggle} || #{balance += amount}.00\n"
     end
@@ -20,3 +20,6 @@ class Statement
   end
 
 end
+
+puts DateTime
+puts DateTime.now

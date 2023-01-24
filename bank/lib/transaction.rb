@@ -1,5 +1,5 @@
 class Transaction
-  def initialize(amount, date)
+  def initialize(amount, date=DateTime)
     @amount = amount
     @date = date
   end
