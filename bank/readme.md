@@ -9,9 +9,14 @@ It is written using Ruby and test-driven with the RSpec framework
     $ cd bank
     $ gem install bundler
     $ bundle install
+    $ ruby app.rb
     
-**To run the test suite, follow above and then**
+**To run the test suite**
 
+    $ git clone git@github.com:[USERNAME]/tech-test.git
+    $ cd bank
+    $ gem install bundler
+    $ bundle install
     $ rspec
 
 ## Specification
