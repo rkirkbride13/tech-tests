@@ -9,7 +9,6 @@ class Transaction
   end
 
   def date
-    formatted_date = @date.today.to_s
-    return "#{formatted_date[8..9]}/#{formatted_date[5..6]}/#{formatted_date[0..3]}"
+    formatted_date = @date.strftime "%d/%m/%Y"
   end
 end

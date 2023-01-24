@@ -11,7 +11,7 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction = Transaction.new(1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction)
     expect(bank.check_balance).to eq 1.00
   end
@@ -20,9 +20,9 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(10, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(-1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     expect(bank.check_balance).to eq 9.00
@@ -32,11 +32,11 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(2, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction3 = Transaction.new(9, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     bank.add_transaction(transaction3)
@@ -47,17 +47,17 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(2, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction3 = Transaction.new(9, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction4 = Transaction.new(-1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction5 = Transaction.new(-2, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction6 = Transaction.new(-5, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     bank.add_transaction(transaction3)
@@ -71,11 +71,11 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(1000, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(2000, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction3 = Transaction.new(-500, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     bank.add_transaction(transaction3)
@@ -86,7 +86,7 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction = Transaction.new(1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction)
     expect(bank.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || 1.00 || || 1.00"
   end
@@ -95,9 +95,9 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(10, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(-1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     expect(bank.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || || 1.00 || 9.00\n23/01/2023 || 10.00 || || 10.00"
@@ -107,9 +107,9 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(1, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(2, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     expect(bank.print_statement).to eq "date || credit || debit || balance\n23/01/2023 || 2.00 || || 3.00\n23/01/2023 || 1.00 || || 1.00"
@@ -119,11 +119,11 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(45, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction2 = Transaction.new(-10, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     transaction3 = Transaction.new(-25, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     bank.add_transaction(transaction3)
@@ -134,11 +134,11 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(1000, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-10")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("10/01/2023")
     transaction2 = Transaction.new(2000, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-13")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("13/01/2023")
     transaction3 = Transaction.new(-500, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-14")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("14/01/2023")
     bank.add_transaction(transaction1)
     bank.add_transaction(transaction2)
     bank.add_transaction(transaction3)
@@ -149,7 +149,7 @@ RSpec.describe Bank do
     bank = Bank.new
     fake_date = double :date
     transaction1 = Transaction.new(10, fake_date)
-    expect(fake_date).to receive(:today).and_return("2023-01-23")
+    expect(fake_date).to receive(:strftime).with("%d/%m/%Y").and_return("23/01/2023")
     bank.add_transaction(transaction1)
     transaction2 = Transaction.new(-100, fake_date)
     expect { bank.add_transaction(transaction2) }.to raise_error 'Insufficienet funds'
