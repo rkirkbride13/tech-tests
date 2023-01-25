@@ -1,13 +1,11 @@
 require 'date'
 
 class Transaction
+  attr_reader :amount
+
   def initialize(amount, date=DateTime)
     @amount = amount
     @date = date
-  end
-
-  def amount
-    return @amount
   end
 
   def date
