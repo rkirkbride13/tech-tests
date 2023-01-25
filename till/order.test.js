@@ -24,7 +24,7 @@ describe('Order', () => {
   it('can list the price of the items in the order, single item', () => {
     const order = new Order('Robbie')
     order.addItem('Tea')
-    expect(order.total()).toBe(3.65)
+    expect(order.itemTotal()).toBe(3.65)
   })
 
   it('can list the price of the items in the order, multiple items', () => {
@@ -32,7 +32,15 @@ describe('Order', () => {
     order.addItem('Tea')
     order.addItem('Cappucino')
     order.addItem('Tea')
-    expect(order.total()).toBe(11.15)
+    expect(order.itemTotal()).toBe(11.15)
+  })
+
+  it('can calculate the tax on the order, with tax at 8.64%', () => {
+    const order = new Order('Robbie')
+    order.addItem('Tea')
+    order.addItem('Cappucino')
+    order.addItem('Tea')
+    expect(order.taxTotal()).toBe(0.96)
   })
 
 });
