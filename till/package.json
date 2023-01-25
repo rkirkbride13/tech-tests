@@ -1,0 +1,15 @@
+{
+  "name": "till",
+  "version": "1.0.0",
+  "description": "Till tech test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "jest": "^29.4.0"
+  }
+}
