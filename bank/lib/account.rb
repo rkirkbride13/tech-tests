@@ -1,7 +1,6 @@
 class Account
   def initialize
     @transactions = []
-    @balance = 0
   end
 
   def add_transaction(transaction)
