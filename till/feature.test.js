@@ -52,7 +52,18 @@ describe("order can be formatted into a receipt", () => {
     const item = new Item('Tea')
     const order = new Order('Robbie', item)
     const receipt = new Receipt(order)
-    expect(receipt.printReceipt()).toBe("Tea                     1 x 3.65")
+
+    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65")
+  })
+
+  it('multiple items on the receipt if mulitple items ordered', () => {
+    const item = new Item('Tea')
+    const order = new Order('Robbie', item)
+    const item2 = new Item('Cortado')
+    order.addItem(item2)
+    const receipt = new Receipt(order)
+
+    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55")
   })
 
 })
