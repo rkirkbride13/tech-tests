@@ -2,7 +2,7 @@ const Order = require('./order');
 const Receipt = require('./receipt');
 const Item = require('./item');
 
-describe("items can be formatted in the receipt class", () => {
+describe("items can be added to an order", () => {
 
   it('takes a name and an item on initialize', () => {
     const item = new Item('Tea')
@@ -43,6 +43,16 @@ describe("items can be formatted in the receipt class", () => {
     order.addItem(item2)
 
     expect(order.taxTotal()).toBe(0.71)
+  })
+})
+
+describe("order can be formatted into a receipt", () => {
+
+  it('lists a single item on the receipt if only one item ordered', () => {
+    const item = new Item('Tea')
+    const order = new Order('Robbie', item)
+    const receipt = new Receipt(order)
+    expect(receipt.printReceipt()).toBe("Tea                     1 x 3.65")
   })
 
 })

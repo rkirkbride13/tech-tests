@@ -35,10 +35,6 @@ class Order {
     let taxTotal = this.itemTotal() * tax
     return Math.round((taxTotal + Number.EPSILON) * 100)/100
   }
-
-  #itemArray() {
-
-  }
 }
 
 module.exports = Order
