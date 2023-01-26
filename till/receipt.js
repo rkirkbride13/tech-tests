@@ -17,9 +17,19 @@ class Receipt {
     this.receipt.push(`Tax${" ".repeat(21)}$${this.order.taxTotal()}\n`)
   }
 
-  printReceipt() {
+  formatTotal() {
+    let total = this.order.taxTotal() + this.order.itemTotal()
+    this.receipt.push(`Total${" ".repeat(19)}$${total}\n`)
+  }
+
+  formatReceipt() {
     this.formatItems()
     this.formatTax()
+    this.formatTotal()
+  }
+
+  printReceipt() {
+    this.formatReceipt()
     const item_string = this.receipt.join('')
     return item_string
     // return item_string.substring(0, item_string.length - 1)

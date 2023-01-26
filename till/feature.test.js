@@ -75,9 +75,6 @@ describe("order can be formatted into a receipt", () => {
 
     expect(receipt.printReceipt()).toContain("Tea                     2 x 3.65\n")
   })
-})
-
-describe("tax can be formatted into a receipt", () => {
 
   it('states tax for items on the receipt', () => {
     const item = new Item('Tea')
@@ -86,7 +83,17 @@ describe("tax can be formatted into a receipt", () => {
     order.addItem(item2)
     const receipt = new Receipt(order)
 
-    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55\nTax                     $0.71\n")
+    expect(receipt.printReceipt()).toContain("Tax                     $0.71\n")
+  })
+
+  it('states the total price on the receipt', () => {
+    const item = new Item('Tea')
+    const order = new Order('Robbie', item)
+    const item2 = new Item('Cortado')
+    order.addItem(item2)
+    const receipt = new Receipt(order)
+
+    expect(receipt.printReceipt()).toContain("Total                   $8.91\n")
   })
 
 })
