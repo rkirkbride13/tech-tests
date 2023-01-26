@@ -106,6 +106,9 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item3)
     const receipt = new Receipt(order)
 
+    expect(receipt.printReceipt()).toContain("Jane\n")
+    expect(receipt.printReceipt()).toContain("Cafe Latte              2 x 4.75\nBlueberry Muffin        1 x 4.05\nChoc Mudcake            1 x 6.40\n")
+    expect(receipt.printReceipt()).toContain("Tax                     $1.72")
     expect(receipt.printReceipt()).toContain("Total                   $21.67")
   })
 

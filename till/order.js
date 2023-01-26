@@ -4,7 +4,7 @@ class Order {
     this.order = [[item.getName(), 1, item.getPrice()]]
   }
 
-  name() {
+  getName() {
     return this.name
   }
 

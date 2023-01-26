@@ -9,7 +9,8 @@ class Receipt {
   formatItems() {
     this.items.forEach(item => {
       let spaces = 24 - item[0].length
-      this.receipt.push(`${item[0]}${" ".repeat(spaces)}${item[1]} x ${item[2]}\n`)
+      let price = item[2].toFixed(2)
+      this.receipt.push(`${item[0]}${" ".repeat(spaces)}${item[1]} x ${price}\n`)
     })
   }
 
@@ -19,7 +20,7 @@ class Receipt {
 
   formatTotal() {
     let total = this.order.taxTotal() + this.order.itemTotal()
-    total = Math.round((total + Number.EPSILON) * 100)/100
+    total = total.toFixed(2)
     this.receipt.push(`Total${" ".repeat(19)}$${total}`)
   }
 
@@ -31,8 +32,9 @@ class Receipt {
 
   printReceipt() {
     this.formatReceipt()
-    const item_string = this.receipt.join('')
-    return item_string
+    this.receipt.push(`${this.order.getName()}\n`)
+    const receipt = this.receipt.join('')
+    return receipt
   }
 }
 
