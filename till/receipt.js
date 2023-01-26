@@ -28,11 +28,11 @@ class Receipt {
     this.formatItems()
     this.formatTax()
     this.formatTotal()
+    this.receipt.unshift(`${this.order.getName()}\n`)
   }
 
   printReceipt() {
     this.formatReceipt()
-    this.receipt.push(`${this.order.getName()}\n`)
     const receipt = this.receipt.join('')
     return receipt
   }
