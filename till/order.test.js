@@ -23,7 +23,7 @@ describe('Order', () => {
       getPrice: () => {return 3.65}
     }
     order.addItem(mockItem2)
-    
+
     expect(order.listItems()).toEqual([['Tea', 2, 3.65]])
   });
 
@@ -65,6 +65,28 @@ describe('Order', () => {
     order.addItem(mockItem2)
 
     expect(order.taxTotal()).toBe(0.71)
+  })
+
+  it('can calculate the item total and tax on the order, with tax at 8.64%', () => {
+    const mockItem1 = {
+      getName: () => {return 'Cafe Latte'},
+      getPrice: () => {return 4.75}
+    }
+    const order = new Order('Robbie', mockItem1)
+    const mockItem2 = {
+      getName: () => {return 'Blueberry Muffin'},
+      getPrice: () => {return 4.05}
+    }
+    const mockItem3 = {
+      getName: () => {return 'Choc Mudcake'},
+      getPrice: () => {return 6.40}
+    }
+    order.addItem(mockItem1)
+    order.addItem(mockItem2)
+    order.addItem(mockItem3)
+
+    expect(order.itemTotal()).toBe(19.95)
+    expect(order.taxTotal()).toBe(1.72)
   })
 
 });

@@ -19,7 +19,8 @@ class Receipt {
 
   formatTotal() {
     let total = this.order.taxTotal() + this.order.itemTotal()
-    this.receipt.push(`Total${" ".repeat(19)}$${total}\n`)
+    total = Math.round((total + Number.EPSILON) * 100)/100
+    this.receipt.push(`Total${" ".repeat(19)}$${total}`)
   }
 
   formatReceipt() {
@@ -32,7 +33,6 @@ class Receipt {
     this.formatReceipt()
     const item_string = this.receipt.join('')
     return item_string
-    // return item_string.substring(0, item_string.length - 1)
   }
 }
 

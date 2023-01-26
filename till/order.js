@@ -8,14 +8,17 @@ class Order {
     return this.name
   }
 
-  addItem(new_item) {
+  addItem(newItem) {
+    let itemExists = false
     this.order.forEach(item => {
-      if (!item.includes(new_item.getName())) {
-        this.order.push([new_item.getName(), 1, new_item.getPrice()])
-      } else {
+      if (item.includes(newItem.getName())) {
         item[1] ++
+        itemExists = true
       }
     })
+    if (!itemExists) {
+      this.order.push([newItem.getName(), 1, newItem.getPrice()])
+    }
   }
 
   listItems() {
@@ -25,9 +28,9 @@ class Order {
   itemTotal() {
     let itemTotal = 0
     this.order.forEach(item => {
-      itemTotal += item[2]
+      itemTotal += (item[1] * item[2])
     })
-    return itemTotal
+    return Math.round((itemTotal + Number.EPSILON) * 100)/100
   }
 
   taxTotal() {

@@ -93,7 +93,20 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item2)
     const receipt = new Receipt(order)
 
-    expect(receipt.printReceipt()).toContain("Total                   $8.91\n")
+    expect(receipt.printReceipt()).toContain("Total                   $8.91")
+  })
+
+  it('states the total price on the receipt for example order', () => {
+    const item = new Item('Cafe Latte')
+    const order = new Order('Jane', item)
+    const item2 = new Item('Blueberry Muffin')
+    const item3 = new Item('Choc Mudcake')
+    order.addItem(item)
+    order.addItem(item2)
+    order.addItem(item3)
+    const receipt = new Receipt(order)
+
+    expect(receipt.printReceipt()).toContain("Total                   $21.67")
   })
 
 })
