@@ -53,7 +53,7 @@ describe("order can be formatted into a receipt", () => {
     const order = new Order('Robbie', item)
     const receipt = new Receipt(order)
 
-    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65")
+    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\n")
   })
 
   it('list multiple items on the receipt if mulitple items ordered', () => {
@@ -63,7 +63,7 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item2)
     const receipt = new Receipt(order)
 
-    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55")
+    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55\n")
   })
 
   it('lists item with quantity 2 if same item ordered twice', () => {
@@ -73,7 +73,20 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item2)
     const receipt = new Receipt(order)
 
-    expect(receipt.printReceipt()).toContain("Tea                     2 x 3.65")
+    expect(receipt.printReceipt()).toContain("Tea                     2 x 3.65\n")
+  })
+})
+
+describe("tax can be formatted into a receipt", () => {
+
+  it('states tax for items on the receipt', () => {
+    const item = new Item('Tea')
+    const order = new Order('Robbie', item)
+    const item2 = new Item('Cortado')
+    order.addItem(item2)
+    const receipt = new Receipt(order)
+
+    expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55\nTax                     $0.71\n")
   })
 
 })
