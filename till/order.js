@@ -1,17 +1,21 @@
-const inventory = require('./inventory.js')
-
 class Order {
-  constructor(name) {
+  constructor(name, item) {
     this.name = name
-    this.order = []
+    this.order = [[item.getName(), 1, item.getPrice()]]
   }
 
   name() {
     return this.name
   }
 
-  addItem(item) {
-    this.order.push(item)
+  addItem(new_item) {
+    this.order.forEach(item => {
+      if (!item.includes(new_item.getName())) {
+        this.order.push([new_item.getName(), 1, new_item.getPrice()])
+      } else {
+        item[1] ++
+      }
+    })
   }
 
   listItems() {
@@ -21,7 +25,7 @@ class Order {
   itemTotal() {
     let itemTotal = 0
     this.order.forEach(item => {
-      itemTotal += inventory.prices[0][item]
+      itemTotal += item[2]
     })
     return itemTotal
   }
@@ -30,6 +34,10 @@ class Order {
     let tax = 0.0864
     let taxTotal = this.itemTotal() * tax
     return Math.round((taxTotal + Number.EPSILON) * 100)/100
+  }
+
+  #itemArray() {
+
   }
 }
 
