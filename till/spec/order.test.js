@@ -4,10 +4,13 @@ describe('Order', () => {
 
   it('takes a name and an item on initialize', () => {
     const mockItem = {
+      setName: () => {},
       getName: () => {return 'Tea'},
       getPrice: () => {return 3.65}
     }
-    const order = new Order('Robbie', mockItem)
+    const order = new Order()
+    order.setName('Robbie')
+    order.addItem(mockItem)
     
     expect(order.listItems()).toEqual([['Tea', 1, 3.65]])
   });
@@ -15,14 +18,17 @@ describe('Order', () => {
   it('overwrites the quantity if same item is added twice', () => {
     const mockItem1 = {
       getName: () => {return 'Tea'},
+      setName: () => {},
       getPrice: () => {return 3.65}
     }
-    const order = new Order('Robbie', mockItem1)
+    const order = new Order()
     const mockItem2 = {
+      setName: () => {},
       getName: () => {return 'Tea'},
       getPrice: () => {return 3.65}
     }
     order.addItem(mockItem2)
+    order.addItem(mockItem1)
 
     expect(order.listItems()).toEqual([['Tea', 2, 3.65]])
   });
@@ -32,8 +38,9 @@ describe('Order', () => {
       getName: () => {return 'Tea'},
       getPrice: () => {return 3.65}
     }
-    const order = new Order('Robbie', mockItem)
-    
+    const order = new Order()
+    order.addItem(mockItem)
+
     expect(order.itemTotal()).toBe(3.65)
   })
 
@@ -42,11 +49,12 @@ describe('Order', () => {
       getName: () => {return 'Tea'},
       getPrice: () => {return 3.65}
     }
-    const order = new Order('Robbie', mockItem1)
+    const order = new Order()
     const mockItem2 = {
       getName: () => {return 'Cortado'},
       getPrice: () => {return 4.55}
     }
+    order.addItem(mockItem1)
     order.addItem(mockItem2)
 
     expect(order.itemTotal()).toBe(8.2)
@@ -57,11 +65,12 @@ describe('Order', () => {
       getName: () => {return 'Tea'},
       getPrice: () => {return 3.65}
     }
-    const order = new Order('Robbie', mockItem1)
+    const order = new Order()
     const mockItem2 = {
       getName: () => {return 'Cortado'},
       getPrice: () => {return 4.55}
     }
+    order.addItem(mockItem1)
     order.addItem(mockItem2)
 
     expect(order.taxTotal()).toBe(0.71)
@@ -72,7 +81,7 @@ describe('Order', () => {
       getName: () => {return 'Cafe Latte'},
       getPrice: () => {return 4.75}
     }
-    const order = new Order('Robbie', mockItem1)
+    const order = new Order()
     const mockItem2 = {
       getName: () => {return 'Blueberry Muffin'},
       getPrice: () => {return 4.05}
@@ -81,6 +90,7 @@ describe('Order', () => {
       getName: () => {return 'Choc Mudcake'},
       getPrice: () => {return 6.40}
     }
+    order.addItem(mockItem1)
     order.addItem(mockItem1)
     order.addItem(mockItem2)
     order.addItem(mockItem3)
@@ -96,8 +106,9 @@ describe('Order', () => {
       getName: () => {return 'Cafe Latte'},
       getPrice: () => {return 4.75}
     }
-    const order = new Order('Robbie', mockItem1)
-    
+    const order = new Order()
+    order.addItem(mockItem1)
+
     expect(order.getDate()).toBe('27/01/2023, 10:36:00')
   })
 

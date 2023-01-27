@@ -1,63 +1,64 @@
-// const Order = require("./order");
 
-// class Interface {
+class Interface {
 
-//   constructor() {
-//     this.nameEl = document.querySelector('#name-input');
-//     this.mainContainer = document.querySelector('#maincontainer');
-//     document.querySelector('#name-button').addEventListener("click", () => {
-//       let item = this.selectItem()
-//       console.log(this.nameEl.value)
-//       let order = new Order(this.nameEl.value, item)
-//     });
-//   }
+  constructor(order, receipt) {
+    this.order = order
+    this.receipt = receipt
+    this.nameEl = document.querySelector('#name-input');
+    this.mainContainer = document.querySelector('#maincontainer');
+    document.querySelector('#name-button').addEventListener("click", () => {
+      let item = this.selectItem()
+      console.log(this.nameEl.value)
+      let order = new Order(this.nameEl.value, item)
+    });
+  }
 
-//   selectItem() {
+  selectItem() {
 
-//     document.querySelector('#Cafe-Latte').addEventListener("click", () => {
-//       let item = new Item('Cafe Latte')
-//       return item;
-//     });
+    document.querySelector('#Cafe-Latte').addEventListener("click", () => {
+      let item = new Item('Cafe Latte')
+      return item;
+    });
 
-//     document.querySelector('#Flat-White').addEventListener("click", () => {
-//       let item = new Item('Flat White')
-//       return item;
-//     });
+    document.querySelector('#Flat-White').addEventListener("click", () => {
+      let item = new Item('Flat White')
+      return item;
+    });
 
-//   }
+  }
 
-// }
+}
 
-// module.exports = Interface
+module.exports = Interface
 
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-  var order = new Order()
+//   var order = new Order()
 
-  $('#name-button').click(function() {
-    let name = document.querySelector('#name-input').value;
-    console.log(name)
-    order.getName(name)
-  })
+//   $('#name-button').click(function() {
+//     let name = document.querySelector('#name-input').value;
+//     console.log(name)
+//     order.getName(name)
+//   })
 
-  $('#Cafe-Latte').click(function() {
-    var item = new Item ('Cafe Latte')
-    order.addItem(item);
-    update();
-  })
+//   $('#Cafe-Latte').click(function() {
+//     var item = new Item ('Cafe Latte')
+//     order.addItem(item);
+//     update();
+//   })
 
-  $('#Muffin-Of-The-Day').click(function() {
-    let item = new Item ('Muffin Of The Day')
-    updateOrder(item);
-  })
+//   $('#Muffin-Of-The-Day').click(function() {
+//     let item = new Item ('Muffin Of The Day')
+//     updateOrder(item);
+//   })
 
-  function updateOrder(item) {
+//   function updateOrder(item) {
 
-    $('#item1').text(order.getName())
-  };
+//     $('#item1').text(order.getName())
+//   };
   
-});
+// });
 
 // $('#Flat-White').click(function() {
 //   let item = new Item ('Flat White')

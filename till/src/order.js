@@ -1,9 +1,13 @@
+const Item = require("./item")
+
 class Order {
-  constructor(name, item) {
-    // this.order = [new item()]
-    this.name = name
-    this.order = [[item.getName(), 1, item.getPrice()]]
+  constructor() {
+    this.order = []
     this.date = new Date()
+  }
+
+  setName(name) {
+    this.name = name
   }
 
   getName() {

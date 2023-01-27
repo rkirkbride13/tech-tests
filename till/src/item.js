@@ -2,7 +2,7 @@ const inventory = require('./inventory.js')
 
 class Item {
 
-  constructor(name) {
+  setName(name) {
     if (!(name in inventory.prices[0])) {
       throw "This item does not exist on the menu"
     }

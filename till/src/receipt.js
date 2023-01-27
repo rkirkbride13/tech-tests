@@ -1,9 +1,13 @@
 class Receipt {
 
-  constructor(order = Order) {
+  constructor() {
+    this.order = []
+    this.receipt = []
+  }
+
+  addOrder(order) {
     this.order = order
     this.items = order.listItems()
-    this.receipt = []
   }
 
   formatItems() {

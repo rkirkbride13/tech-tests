@@ -10,7 +10,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 0.32},
       itemTotal: () => {return 3.65}
     }
-    const receipt = new Receipt(mockOrder)
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)
     
     expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\n")
   });
@@ -23,8 +24,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 0.71},
       itemTotal: () => {return 8.20}
     }
-    const receipt = new Receipt(mockOrder)
-    
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)    
     expect(receipt.printReceipt()).toContain("Tea                     1 x 3.65\nCortado                 1 x 4.55\n")
   });
 
@@ -36,8 +37,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 0.64},
       itemTotal: () => {return 7.30}
     }
-    const receipt = new Receipt(mockOrder)
-    
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)    
     expect(receipt.printReceipt()).toContain("Tea                     2 x 3.65\n")
   });
 
@@ -49,8 +50,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 0.71},
       itemTotal: () => {return 8.20}
     }
-    const receipt = new Receipt(mockOrder)
-    
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)    
     expect(receipt.printReceipt()).toContain("Tax                     $0.71\n")
   });
 
@@ -62,8 +63,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 0.71},
       itemTotal: () => {return 8.20}
     }
-    const receipt = new Receipt(mockOrder)
-    
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)    
     expect(receipt.printReceipt()).toContain("Total                   $8.91")
   });
 
@@ -75,8 +76,8 @@ describe('Receipt', () => {
       taxTotal: () => {return 1.72},
       itemTotal: () => {return 19.95}
     }
-    const receipt = new Receipt(mockOrder)
-    
+    const receipt = new Receipt()
+    receipt.addOrder(mockOrder)    
     expect(receipt.printReceipt()).toContain("27/01/2023, 10:36:00\n")
     expect(receipt.printReceipt()).toContain("Jane\n")
     expect(receipt.printReceipt()).toContain("Cafe Latte              2 x 4.75\nBlueberry Muffin        1 x 4.05\nChoc Mudcake            1 x 6.40\n")
