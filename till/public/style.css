@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata&effect=fire-animation");
+
+body {
+  font-size: 13px;
+  background-color: rgb(209, 117, 68);
+}
+
+h1 {
+  color: #dfe0e4;
+  font-size: 60px;
+  text-align: center;
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+button {
+  color: #fff;
+  background-color: rgb(220, 136, 91);
+  border-color:  rgb(220, 136, 91);
+  border-style: double;
+  width: 100%;
+}
+
+table.menu {
+  min-width: 500px;
+  background-color: rgb(220, 136, 91);
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #fff;
+  border-style: double;
+  color: #fff;
+  table-layout: fixed;
+  text-align: center;
+  width: 25vw;
+}
+
+table.menu td,
+table.menu th {
+  border-width: 2px;
+  border-color: #fff;
+  border-style: double;
+}
