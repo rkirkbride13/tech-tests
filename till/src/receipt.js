@@ -24,7 +24,7 @@ class Receipt {
     this.receipt.push(`Total${" ".repeat(19)}$${total}`)
   }
 
-  formatReceipt() {
+  compileReceipt() {
     this.formatItems()
     this.formatTax()
     this.formatTotal()
@@ -33,7 +33,7 @@ class Receipt {
   }
 
   printReceipt() {
-    this.formatReceipt()
+    this.compileReceipt()
     const receipt = this.receipt.join('')
     return receipt
   }

@@ -1,4 +1,4 @@
-const Order = require('./order.js')
+const Order = require('../src/order.js')
 
 describe('Order', () => {
 

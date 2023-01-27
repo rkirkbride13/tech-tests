@@ -1,4 +1,4 @@
-const Receipt = require('./receipt.js')
+const Receipt = require('../src/receipt.js')
 
 describe('Receipt', () => {
 

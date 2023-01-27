@@ -1,6 +1,6 @@
-const Order = require('./order');
-const Receipt = require('./receipt');
-const Item = require('./item');
+const Order = require('../src/order');
+const Receipt = require('../src/receipt');
+const Item = require('../src/item');
 
 describe("items can be added to an order", () => {
 
@@ -108,7 +108,7 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item2)
     order.addItem(item3)
     const receipt = new Receipt(order)
-
+    
     expect(receipt.printReceipt()).toContain("27/01/2023, 10:36:00\n")
     expect(receipt.printReceipt()).toContain("Jane\n")
     expect(receipt.printReceipt()).toContain("Cafe Latte              2 x 4.75\nBlueberry Muffin        1 x 4.05\nChoc Mudcake            1 x 6.40\n")
