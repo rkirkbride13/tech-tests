@@ -29,6 +29,7 @@ class Receipt {
     this.formatTax()
     this.formatTotal()
     this.receipt.unshift(`${this.order.getName()}\n`)
+    this.receipt.unshift(`${this.order.getDate()}\n`)
   }
 
   printReceipt() {
