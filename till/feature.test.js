@@ -97,6 +97,9 @@ describe("order can be formatted into a receipt", () => {
   })
 
   it('states the total price on the receipt for example order', () => {
+    jest.useFakeTimers('modern')
+    jest.setSystemTime(new Date(Date.UTC(2023, 0, 27, 10, 36, 0)))
+    
     const item = new Item('Cafe Latte')
     const order = new Order('Jane', item)
     const item2 = new Item('Blueberry Muffin')
@@ -106,6 +109,7 @@ describe("order can be formatted into a receipt", () => {
     order.addItem(item3)
     const receipt = new Receipt(order)
 
+    expect(receipt.printReceipt()).toContain("27/01/2023, 10:36:00\n")
     expect(receipt.printReceipt()).toContain("Jane\n")
     expect(receipt.printReceipt()).toContain("Cafe Latte              2 x 4.75\nBlueberry Muffin        1 x 4.05\nChoc Mudcake            1 x 6.40\n")
     expect(receipt.printReceipt()).toContain("Tax                     $1.72")
