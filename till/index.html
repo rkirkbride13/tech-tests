@@ -3,33 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Till interface</title>
     <link rel="stylesheet" href="public/style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="maincontainer">
       <h1 class="font-effect-fire-animation">Hipster Coffee</h1>
       <br />
+      <div>
+        <input type="text" id="name-input" placeholder="Your name here..."/>
+        <button class="submit" id="name-button">Submit</button>
+      </div>
+      <br/>
       <table id="menu" class="menu">
         <thead>
           <tr>
             <th>Item</th>
             <th>Price</th>
           </tr><tr>
-            <th><button id="Cafe Latte">Cafe Latte</button></th>
+            <th><button id="Cafe-Latte">Cafe Latte</button></th>
             <th>£4.75</th>
           </tr><tr>
-            <th><button id="Flat White">Flat White</button></th>
+            <th><button id="Flat-White">Flat White</button></th>
             <th>£4.75</th>
           </tr><tr>
             <th><button id="Cappucino">Cappucino</button></th>
             <th>£3.85</th>
           </tr><tr>
-            <th><button id="Single Espresso">Single Espresso</button></th>
+            <th><button id="Single-Espresso">Single Espresso</button></th>
             <th>£2.05</th>
           </tr><tr>
-            <th><button id="Double Espresso">Double Espresso</button></th>
+            <th><button id="Double-Espresso">Double Espresso</button></th>
             <th>£3.75</th>
           </tr><tr>
             <th><button id="Americano">Americano</button></th>
@@ -41,10 +47,10 @@
             <th><button id="Tea">Tea</button></th>
             <th>£3.65</th>
           </tr><tr>
-            <th><button id="Choc Mudcake">Choc Mudcake</button></th>
+            <th><button id="Choc-Mudcake">Choc Mudcake</button></th>
             <th>£6.40</th>
           </tr><tr>
-            <th><button id="Choc Mousse">Choc Mousse</button></th>
+            <th><button id="Choc-Mousse">Choc Mousse</button></th>
             <th>£8.20</th>
           </tr><tr>
             <th><button id="Affogato">Affogato</button></th>
@@ -53,22 +59,38 @@
             <th><button id="Tiramisu">Tiramisu</button></th>
             <th>£11.40</th>
           </tr><tr>
-            <th><button id="Blueberry Muffin">Blueberry Muffin</button></th>
+            <th><button id="Blueberry-Muffin">Blueberry Muffin</button></th>
             <th>£4.05</th>
           </tr><tr>
-            <th><button id="Chocolate Chip Muffin">Chocolate Chip Muffin</button></th>
+            <th><button id="Chocolate-Chip-Muffin">Chocolate Chip Muffin</button></th>
             <th>£4.05</th>
           </tr><tr>
-            <th><button id="Muffin Of The Day">Muffin Of The Day</button></th>
+            <th><button id="Muffin-Of-The-Day">Muffin Of The Day</button></th>
             <th>£4.55</th>
           </tr>
         </thead>
       </table>
-      <br /><br /><br />
+      <br />Order<br/>
+      <table id="menu" class="menu">
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr><tr>
+          <th id="item1"></th>
+          <th id="quantity1"></th>
+          <th id="price1"></th>
+        </tr><tr>
+          <th id="item2"></th>
+          <th id="quantity2"></th>
+          <th id="price2"></th>
+      </table>
+      
     </div>
     <script src="src/item.js"></script>
     <script src="src/order.js"></script>
     <script src="src/receipt.js"></script>
+    <script src="src/inventory.js"></script>
     <script type="text/javascript" src="src/interface.js"></script>
   </body>
 </html>

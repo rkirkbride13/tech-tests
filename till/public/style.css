@@ -27,6 +27,12 @@ button {
   width: 100%;
 }
 
+button.submit {
+  color: #fff;
+  background-color: rgb(213, 188, 175);
+  width: 5vw;
+}
+
 table.menu {
   min-width: 500px;
   background-color: rgb(220, 136, 91);

@@ -1,6 +1,6 @@
 class Receipt {
 
-  constructor(order) {
+  constructor(order = Order) {
     this.order = order
     this.items = order.listItems()
     this.receipt = []
