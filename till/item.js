@@ -2,7 +2,10 @@ const inventory = require('./inventory.js')
 
 class Item {
 
-  constructor(name){
+  constructor(name) {
+    if (!(name in inventory.prices[0])) {
+      throw "This item does not exist on the menu"
+    }
     this.name = name
   }
 
