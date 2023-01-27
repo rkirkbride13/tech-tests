@@ -89,4 +89,16 @@ describe('Order', () => {
     expect(order.taxTotal()).toBe(1.72)
   })
 
+  it('has the date the order was created included in the class', () => {
+    // Date.now = jest.fn(() => new Date(Date.UTC(2023, 1, 27, 10, 36, 0)).valueOf())
+    jest.useFakeTimers('modern')
+    jest.setSystemTime(new Date(Date.UTC(2023, 0, 27, 10, 36, 0)))
+    const mockItem1 = {
+      getName: () => {return 'Cafe Latte'},
+      getPrice: () => {return 4.75}
+    }
+    const order = new Order('Robbie', mockItem1)
+    expect(order.getDate()).toBe('27/01/2023, 10:36:00')
+  })
+
 });

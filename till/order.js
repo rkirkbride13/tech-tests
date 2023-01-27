@@ -2,21 +2,26 @@ class Order {
   constructor(name, item) {
     this.name = name
     this.order = [[item.getName(), 1, item.getPrice()]]
+    this.date = new Date()
   }
 
   getName() {
     return this.name
   }
 
+  getDate() {
+    return this.date.toLocaleString()
+  }
+
   addItem(newItem) {
-    let itemExists = false
+    let itemOrdered = false
     this.order.forEach(item => {
       if (item.includes(newItem.getName())) {
         item[1] ++
-        itemExists = true
+        itemOrdered = true
       }
     })
-    if (!itemExists) {
+    if (!itemOrdered) {
       this.order.push([newItem.getName(), 1, newItem.getPrice()])
     }
   }
