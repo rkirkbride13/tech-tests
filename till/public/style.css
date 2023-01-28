@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&effect=fire-animation");
 
+:root {
+  --prim: rgb(209, 117, 68);
+  --sec: rgb(70, 64, 61);
+  /* --sec: rgb(220, 136, 91); */
+}
+
 body {
   font-size: 13px;
-  background-color: rgb(209, 117, 68);
+  background-color: var(--prim);
 }
 
 h1 {
@@ -23,8 +29,8 @@ h1 {
 
 button {
   color: #fff;
-  background-color: rgb(220, 136, 91);
-  border-color:  rgb(220, 136, 91);
+  background-color: var(--sec);
+  border-color:  var(--sec);
   border-style: double;
   width: 100%;
 }
@@ -37,7 +43,7 @@ button.submit {
 
 table.menu {
   min-width: 500px;
-  background-color: rgb(220, 136, 91);
+  background-color: var(--sec);
   border-collapse: collapse;
   border-width: 2px;
   border-color: #fff;
@@ -62,6 +68,6 @@ table.menu th {
 .order {
   float: right;
   color: #fff;
-  background-color: rgb(220, 136, 91);
+  background-color: var(--sec);
 
 }

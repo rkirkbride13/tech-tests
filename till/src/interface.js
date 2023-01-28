@@ -14,6 +14,7 @@ class Interface {
     document.querySelector('#name-button').addEventListener("click", () => {
       order.setName(this.nameEl.value)
       console.log(this.nameEl.value)
+      this.nameEl.value = ''
     });
     this.setButtons()
   }
@@ -36,6 +37,12 @@ class Interface {
   }
 
   displayOrder() {
+    this.displayItems()
+    this.displayTax()
+    this.displayTotal()
+  }
+
+  displayItems(){
     this.receipt.clearReceipt()
     this.receipt.addOrder(this.order)
     this.receipt.formatItems()
@@ -48,16 +55,24 @@ class Interface {
       `
       this.orderContainer.append(orderEl)
     })
+  }
 
-    // this.order.listItems().forEach(item => {
-    //   const orderEl = document.createElement('div')
-    //   orderEl.innerHTML = `
-    //     <div class="item">
-    //     ${item}
-    //     </div>
-    //   `
-    //   this.orderContainer.append(orderEl)
-    // })
+  displayTax(){
+    const taxEl = document.createElement('div')
+    taxEl.innerHTML = `
+    <div class="tax">
+    Tax $${this.order.taxTotal()}
+    `
+    this.orderContainer.append(taxEl)
+  }
+
+  displayTotal(){
+    const totalEl = document.createElement('div')
+    totalEl.innerHTML = `
+    <div class="total">
+    Total $${this.order.itemTotal() + this.order.taxTotal()}
+    `
+    this.orderContainer.append(totalEl)
   }
 
   #displayMenu() {
