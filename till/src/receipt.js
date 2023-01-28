@@ -10,6 +10,14 @@ class Receipt {
     this.items = order.listItems()
   }
 
+  getReceipt() {
+    return this.receipt
+  }
+
+  clearReceipt() {
+    return this.receipt = []
+  }
+
   formatItems() {
     this.items.forEach(item => {
       let spaces = 24 - item[0].length

@@ -1,138 +1,81 @@
+const Item = require("./item")
 
 class Interface {
 
-  constructor(order, receipt) {
+  constructor(order, receipt, inventory) {
     this.order = order
     this.receipt = receipt
+    this.menu = inventory.prices[0]
     this.nameEl = document.querySelector('#name-input');
     this.mainContainer = document.querySelector('#maincontainer');
+    this.orderContainer = document.querySelector('#order');
+    this.menuTable = document.querySelector('#menu');
+    this.#displayMenu()
     document.querySelector('#name-button').addEventListener("click", () => {
-      let item = this.selectItem()
+      order.setName(this.nameEl.value)
       console.log(this.nameEl.value)
-      let order = new Order(this.nameEl.value, item)
     });
+    this.setButtons()
   }
 
-  selectItem() {
+  setButtons() {
+    const wrapper = document.getElementById('wrapper');
+    wrapper.addEventListener("click", (event) => {
+      const isButton = event.target.nodeName === 'BUTTON';
+      if (!isButton) {
+        return;
+      }
+      let item = new Item()
+      item.setName(`${event.target.id}`)
+      this.order.addItem(item)
+      console.dir(event.target.id);
+      console.log(this.order.listItems())
+      this.#clearOrder()
+      this.displayOrder()
+    })
+  }
 
-    document.querySelector('#Cafe-Latte').addEventListener("click", () => {
-      let item = new Item('Cafe Latte')
-      return item;
-    });
+  displayOrder() {
+    this.receipt.clearReceipt()
+    this.receipt.addOrder(this.order)
+    this.receipt.formatItems()
+    this.receipt.getReceipt().forEach(item => {
+      const orderEl = document.createElement('div')
+      orderEl.innerHTML = `
+        <div class="item">
+        ${item}
+        </div>
+      `
+      this.orderContainer.append(orderEl)
+    })
 
-    document.querySelector('#Flat-White').addEventListener("click", () => {
-      let item = new Item('Flat White')
-      return item;
-    });
+    // this.order.listItems().forEach(item => {
+    //   const orderEl = document.createElement('div')
+    //   orderEl.innerHTML = `
+    //     <div class="item">
+    //     ${item}
+    //     </div>
+    //   `
+    //   this.orderContainer.append(orderEl)
+    // })
+  }
 
+  #displayMenu() {
+    let rowNum = 1
+    Object.keys(this.menu).forEach(key => {
+      let row = this.menuTable.insertRow(rowNum)
+      let cell1 = row.insertCell(0)
+      let cell2 = row.insertCell(1)
+      cell1.innerHTML = `<button id="${key}">${key}</button>`
+      cell2.innerHTML = `£${this.menu[key]}`
+      rowNum ++
+    })
+  }
+
+  #clearOrder(){
+    this.orderContainer.querySelectorAll('div').forEach(item => item.remove());
   }
 
 }
 
 module.exports = Interface
-
-
-// $(document).ready(function(){
-
-//   var order = new Order()
-
-//   $('#name-button').click(function() {
-//     let name = document.querySelector('#name-input').value;
-//     console.log(name)
-//     order.getName(name)
-//   })
-
-//   $('#Cafe-Latte').click(function() {
-//     var item = new Item ('Cafe Latte')
-//     order.addItem(item);
-//     update();
-//   })
-
-//   $('#Muffin-Of-The-Day').click(function() {
-//     let item = new Item ('Muffin Of The Day')
-//     updateOrder(item);
-//   })
-
-//   function updateOrder(item) {
-
-//     $('#item1').text(order.getName())
-//   };
-  
-// });
-
-// $('#Flat-White').click(function() {
-//   let item = new Item ('Flat White')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Cappucino').click(function() {
-//   let item = new Item ('Cappucino')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Single-Espresso').click(function() {
-//   let item = new Item ('Single Espresso')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Double-Espresso').click(function() {
-//   let item = new Item ('Double Espresso')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Americano').click(function() {
-//   let item = new Item ('Americano')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Cortado').click(function() {
-//   let item = new Item ('Cortado')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Tea').click(function() {
-//   let item = new Item ('Tea')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Choc-Mudcake').click(function() {
-//   let item = new Item ('Choc Mudcake')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Choc-Mousse').click(function() {
-//   let item = new Item ('Choc Mousse')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Affogato').click(function() {
-//   let item = new Item ('Affogato')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Tiramisu').click(function() {
-//   let item = new Item ('Tiramisu')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Blueberry-Muffin').click(function() {
-//   let item = new Item ('Blueberry Muffin')
-//   order.addItem(item);
-//   update();
-// })
-
-// $('#Chocolate-Chip-Muffin').click(function() {
-//   let item = new Item ('Chocolate Chip Muffin')
-//   update();
-// })
