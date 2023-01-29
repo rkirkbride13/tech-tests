@@ -20,7 +20,7 @@ h1 {
 }
 
 h3 {
-  color: #dfe0e4;
+  color: #ffffff;
 }
 
 .maincontainer {
@@ -79,14 +79,20 @@ font-weight: bold;
 }
 
 .order_box {
-  display: inline-table;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 50%;
 }
 
 .receipt_box {
-  display: inline-table;
-  width: 50%;
-  float: right;
+  text-indent: 3%;
+  color: rgb(87, 59, 34);
+  background-color: var(--sec);
+  background-color: rgb(255, 229, 215);
+  min-width: 250px;
+  width: 12.5vw;
 }
 
 button.submitOrder {

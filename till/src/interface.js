@@ -49,15 +49,18 @@ class Interface {
   displayReceipt() {
     if (this.toggleReceipt) {
       this.receipt.addOrder(this.order)
+      this.receipt.compileReceipt()
       console.log(this.receipt.getReceipt())
       const receiptBox = document.querySelector('#receipt_box');
-      const receiptEl = document.createElement('div')
-      receiptEl.innerHTML = `
-        <div class="receipt">
-        ${this.receipt.printReceipt()}
-        </div>
-      `
-      receiptBox.append(receiptEl)
+      this.receipt.getReceipt().forEach(line => {
+        const receiptEl = document.createElement('div')
+        receiptEl.innerHTML = `
+          <div class="line">
+          ${line}
+          </div>
+        `
+        receiptBox.append(receiptEl)
+      })
       this.toggleReceipt = false
     }
   }
@@ -107,7 +110,6 @@ class Interface {
       this.submitOrder = document.createElement('div')
       this.submitOrder.innerHTML = `
       <button class="submitOrder" id="submitOrder">Submit Order</button>
-      </div>
       `
       const orderBox = document.querySelector('#order_box');
       orderBox.append(this.submitOrder)
