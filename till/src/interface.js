@@ -10,6 +10,8 @@ class Interface {
     this.mainContainer = document.querySelector('#maincontainer');
     this.orderContainer = document.querySelector('#order');
     this.menuTable = document.querySelector('#menu');
+    this.displayButton = true
+    this.toggleReceipt = true
     this.#displayMenu()
     document.querySelector('#name-button').addEventListener("click", () => {
       order.setName(this.nameEl.value)
@@ -36,10 +38,35 @@ class Interface {
     })
   }
 
+  printReceipt() {
+    const print = document.getElementById('submitOrder');
+    print.addEventListener("click", () => {
+      this.receipt.clearReceipt()
+      this.displayReceipt()
+    })
+  }
+
+  displayReceipt() {
+    if (this.toggleReceipt) {
+      this.receipt.addOrder(this.order)
+      console.log(this.receipt.getReceipt())
+      const receiptBox = document.querySelector('#receipt_box');
+      const receiptEl = document.createElement('div')
+      receiptEl.innerHTML = `
+        <div class="receipt">
+        ${this.receipt.printReceipt()}
+        </div>
+      `
+      receiptBox.append(receiptEl)
+      this.toggleReceipt = false
+    }
+  }
+
   displayOrder() {
     this.displayItems()
     this.displayTax()
     this.displayTotal()
+    this.displaySubmit()
   }
 
   displayItems(){
@@ -73,6 +100,20 @@ class Interface {
     Total $${this.order.itemTotal() + this.order.taxTotal()}
     `
     this.orderContainer.append(totalEl)
+  }
+
+  displaySubmit() {
+    if (this.displayButton) {
+      this.submitOrder = document.createElement('div')
+      this.submitOrder.innerHTML = `
+      <button class="submitOrder" id="submitOrder">Submit Order</button>
+      </div>
+      `
+      const orderBox = document.querySelector('#order_box');
+      orderBox.append(this.submitOrder)
+      this.displayButton = false
+    }
+    this.printReceipt()
   }
 
   #displayMenu() {

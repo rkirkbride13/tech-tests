@@ -11,41 +11,26 @@
     <div class="maincontainer">
       <h1 class="font-effect-fire-animation">Hipster Coffee</h1>
       <br />
-      <div>
-        <input type="text" id="name-input" placeholder="Your name here..."/>
-        <button class="submit" id="name-button">Submit</button>
+      <div class="order_box" id="order_box">
+        <div>
+          <input type="text" id="name-input" placeholder="Name on order..."/>
+          <button class="submit" id="name-button">Submit</button>
+        </div>
+        <br/>
+        <div id="wrapper" >
+          <table id="menu" class="menu">
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+            </tr>
+          </table>
+        </div>
+        <h3>Order</h3>
+        <div id="order" class="order">
+        </div><br/>
       </div>
-      <br/>
-      <div id="wrapper" >
-        <table id="menu" class="menu">
-          <tr>
-            <th>Item</th>
-            <th>Price</th>
-          </tr>
-        </table>
-      </div>
-      <br/>
-      Order
-      <br/>
-      <div id="order" class="order">
-        
-      </div>
-      <!-- <br />Order<br/>
-      <table id="menu" class="menu">
-        <tr>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr><tr>
-          <th id="item1"></th>
-          <th id="quantity1"></th>
-          <th id="price1"></th>
-        </tr><tr>
-          <th id="item2"></th>
-          <th id="quantity2"></th>
-          <th id="price2"></th>
-      </table> -->
-      
+      <div class="receipt_box" id="receipt_box">
+      </div>      
     </div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>

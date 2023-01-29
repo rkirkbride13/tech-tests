@@ -19,12 +19,15 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  color: #dfe0e4;
+}
+
 .maincontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 95vh;
 }
 
 button {
@@ -37,8 +40,9 @@ button {
 
 button.submit {
   color: #fff;
+  border-color: #fff;
   background-color: rgb(213, 188, 175);
-  width: 5vw;
+  width: 5rem;
 }
 
 table.menu {
@@ -61,13 +65,34 @@ table.menu th {
   border-style: double;
 }
 
-.wrapper {
-  float: left;
+.order {
+text-indent: 3%;
+color: rgb(87, 59, 34);
+background-color: var(--sec);
+background-color: rgb(255, 229, 215);
+min-width: 250px;
+width: 12.5vw;
 }
 
-.order {
-  float: right;
-  color: #fff;
-  background-color: var(--sec);
+.tax, .total {
+font-weight: bold;
+}
 
+.order_box {
+  display: inline-table;
+  width: 50%;
+}
+
+.receipt_box {
+  display: inline-table;
+  width: 50%;
+  float: right;
+}
+
+button.submitOrder {
+  color: #fff;
+  border-color: #fff;
+  background-color: rgb(213, 188, 175);
+  min-width: 250px;
+  width: 12.5vw;
 }
