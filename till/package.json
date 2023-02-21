@@ -12,6 +12,10 @@
   "keywords": [],
   "dependencies": {
     "esbuild": "^0.17.4",
-    "jest": "^29.4.0"
+    "jest": "^29.4.0",
+    "jsdom": "^21.1.0"
+  },
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.4.3"
   }
 }

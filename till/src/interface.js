@@ -15,7 +15,6 @@ class Interface {
     this.#displayMenu()
     document.querySelector('#name-button').addEventListener("click", () => {
       order.setName(this.nameEl.value)
-      console.log(this.nameEl.value)
       this.nameEl.value = ''
     });
     this.setButtons()
@@ -31,8 +30,6 @@ class Interface {
       let item = new Item()
       item.setName(`${event.target.id}`)
       this.order.addItem(item)
-      console.dir(event.target.id);
-      console.log(this.order.listItems())
       this.#clearOrder()
       this.displayOrder()
     })
@@ -50,7 +47,6 @@ class Interface {
     if (this.toggleReceipt) {
       this.receipt.addOrder(this.order)
       this.receipt.compileReceipt()
-      console.log(this.receipt.getReceipt())
       const receiptBox = document.querySelector('#receipt_box');
       this.receipt.getReceipt().forEach(line => {
         const receiptEl = document.createElement('div')
