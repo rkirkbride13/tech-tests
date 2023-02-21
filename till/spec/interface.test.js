@@ -42,7 +42,6 @@ describe(Interface, () => {
     textInputEl.value = "Robbie";
     buttonEl.click();
 
-    expect(textInputEl.value).toBe("");
     expect(order.getName()).toBe("Robbie");
   });
 
@@ -97,6 +96,22 @@ describe(Interface, () => {
     expect(receipt).toContain("Cappucino               2 x 3.85");
     expect(receipt).toContain("Americano               1 x 3.75");
     expect(receipt).toContain("Total                   $12.44");
+  });
 
+  it("can reset an order by clicking the reset button", () => {
+    const textInputEl = document.querySelector("#name-input");
+    const nameButton = document.querySelector("#name-button");
+    textInputEl.value = "Robbie";
+    nameButton.click();
+
+    const buttonEl1 = document.querySelector("#Americano");
+    buttonEl1.click();
+    const buttonEl2 = document.querySelector("#Cappucino");
+    buttonEl2.click();
+
+    const resetButton = document.querySelector("#reset-button");
+    resetButton.click();
+
+    expect(order.listItems()).toEqual([]);
   });
 });

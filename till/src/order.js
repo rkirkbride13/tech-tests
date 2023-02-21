@@ -35,6 +35,10 @@ class Order {
     return this.order
   }
 
+  clearOrder() {
+    return this.order = []
+  }
+
   itemTotal() {
     let itemTotal = 0
     this.order.forEach(item => {
