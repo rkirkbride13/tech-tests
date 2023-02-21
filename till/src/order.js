@@ -1,5 +1,3 @@
-const Item = require("./item")
-
 class Order {
   constructor() {
     this.order = []
