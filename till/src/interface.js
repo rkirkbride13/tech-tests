@@ -7,8 +7,6 @@ class Interface {
     this.menu = inventory.prices[0];
     this.orderContainer = document.querySelector("#order");
     this.menuTable = document.querySelector("#menu");
-    this.displayButton = true;
-    this.toggleReceipt = true;
     this.execute();
   }
 
@@ -22,6 +20,12 @@ class Interface {
   resetOrder() {
     document.querySelector("#reset-button").addEventListener("click", () => {
       this.order.clearOrder();
+      this.#clearOrder();
+      document.querySelector("#submitOrder").remove();
+      if (document.querySelector("#receipt_box")) {
+        document.querySelectorAll(".line").forEach((item) => item.remove());
+      }
+      this.submitOrder = false;
     });
   }
 
@@ -46,30 +50,19 @@ class Interface {
     });
   }
 
-  printReceipt() {
-    const print = document.getElementById("submitOrder");
-    print.addEventListener("click", () => {
-      this.receipt.clearReceipt();
-      this.displayReceipt();
-    });
-  }
-
   displayReceipt() {
-    if (this.toggleReceipt) {
-      this.receipt.addOrder(this.order);
-      this.receipt.compileReceipt();
-      const receiptBox = document.querySelector("#receipt_box");
-      this.receipt.getReceipt().forEach((line) => {
-        const receiptEl = document.createElement("div");
-        receiptEl.innerHTML = `
+    this.receipt.addOrder(this.order);
+    this.receipt.compileReceipt();
+    const receiptBox = document.querySelector("#receipt_box");
+    this.receipt.getReceipt().forEach((line) => {
+      const receiptEl = document.createElement("div");
+      receiptEl.innerHTML = `
           <div class="line">
           ${line}
           </div>
         `;
-        receiptBox.append(receiptEl);
-      });
-      this.toggleReceipt = false;
-    }
+      receiptBox.append(receiptEl);
+    });
   }
 
   displayOrder() {
@@ -113,16 +106,18 @@ class Interface {
   }
 
   displaySubmit() {
-    if (this.displayButton) {
+    if (!this.submitOrder) {
       this.submitOrder = document.createElement("div");
       this.submitOrder.innerHTML = `
       <button class="submitOrder" id="submitOrder">Submit Order</button>
       `;
       const orderBox = document.querySelector("#order_box");
       orderBox.append(this.submitOrder);
-      this.displayButton = false;
+      document.getElementById("submitOrder").addEventListener("click", () => {
+        this.receipt.clearReceipt();
+        this.displayReceipt();
+      });
     }
-    this.printReceipt();
   }
 
   #displayMenu() {
