@@ -41,17 +41,13 @@ class Interface {
     this.receipt.addOrder(this.order);
     this.receipt.compileReceipt();
     const receiptBox = document.querySelector("#receipt_box");
-    this.#insertLogo()
+    this.#insertLogo();
     this.receipt.getReceipt().forEach((line) => {
       const receiptEl = document.createElement("div");
-      receiptEl.innerHTML = `
-          <div class="line">
-          ${line}
-          </div>
-        `;
+      receiptEl.innerHTML = `<div class="line">${line}</div>`;
       receiptBox.append(receiptEl);
     });
-    this.#insertFooter()
+    this.#insertFooter();
   }
 
   displayOrder() {
@@ -67,8 +63,10 @@ class Interface {
       this.order.clearOrder();
       this.#clearOrder();
       document.querySelector("#submitOrder").remove();
-      if (document.querySelector("#receipt_box")) {
+      if (document.querySelector("#receipt_box").querySelector("img")) {
+        document.querySelector("#logo").remove();
         document.querySelectorAll(".line").forEach((item) => item.remove());
+        document.querySelector("#footer").remove();
       }
       this.submitOrder = false;
     });
@@ -92,11 +90,7 @@ class Interface {
     this.receipt.formatItems();
     this.receipt.getReceipt().forEach((item) => {
       const orderEl = document.createElement("div");
-      orderEl.innerHTML = `
-        <div class="item">
-        ${item}
-        </div>
-      `;
+      orderEl.innerHTML = `<div class="item">${item}</div>`;
       this.orderContainer.append(orderEl);
     });
   }
@@ -112,19 +106,16 @@ class Interface {
 
   #displayTotal() {
     const totalEl = document.createElement("div");
-    totalEl.innerHTML = `
-    <div class="total">
-    Total $${this.order.itemTotal() + this.order.taxTotal()}
-    `;
+    totalEl.innerHTML = `<div class="total">Total $${
+      this.order.itemTotal() + this.order.taxTotal()
+    }`;
     this.orderContainer.append(totalEl);
   }
 
   #displaySubmitOrder() {
     if (!this.submitOrder) {
       this.submitOrder = document.createElement("div");
-      this.submitOrder.innerHTML = `
-      <button class="submitOrder" id="submitOrder">Submit Order</button>
-      `;
+      this.submitOrder.innerHTML = `<button class="submitOrder" id="submitOrder">Submit Order</button>`;
       const orderBox = document.querySelector("#order_box");
       orderBox.append(this.submitOrder);
       document.getElementById("submitOrder").addEventListener("click", () => {
@@ -141,13 +132,15 @@ class Interface {
   }
 
   #insertLogo() {
-    const logo = document.createElement("img")
-    logo.src = './public/logo.png'
+    const logo = document.createElement("img");
+    logo.src = "./public/logo.png";
+    logo.id = "logo";
     document.getElementById("receipt_box").appendChild(logo);
   }
   #insertFooter() {
-    const footer = document.createElement("img")
-    footer.src = './public/footer.png'
+    const footer = document.createElement("img");
+    footer.src = "./public/footer.png";
+    footer.id = "footer";
     document.getElementById("receipt_box").appendChild(footer);
   }
 }
