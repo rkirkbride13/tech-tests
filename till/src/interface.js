@@ -40,18 +40,10 @@ class Interface {
   displayReceipt() {
     this.receipt.addOrder(this.order);
     this.receipt.compileReceipt();
-    const receiptBox = document.createElement("div");
-    receiptBox.id = "receipt_box";
-    receiptBox.classList.add("receipt_box");
-    const mainContainer = document.querySelector(".maincontainer");
-    mainContainer.append(receiptBox);
-    this.#insertLogo();
-    this.receipt.getReceipt().forEach((line) => {
-      const receiptEl = document.createElement("div");
-      receiptEl.innerHTML = `<div class="line">${line}</div>`;
-      receiptBox.append(receiptEl);
-    });
-    this.#insertFooter();
+    this.#createReceiptHTML();
+    this.#insertReceiptLogo();
+    this.#insertReceiptItems();
+    this.#insertReceiptFooter();
   }
 
   displayOrder() {
@@ -127,23 +119,40 @@ class Interface {
     }
   }
 
-  #clearOrder() {
-    this.orderContainer
-      .querySelectorAll("div")
-      .forEach((item) => item.remove());
+  #createReceiptHTML() {
+    this.receiptBox = document.createElement("div");
+    this.receiptBox.id = "receipt_box";
+    this.receiptBox.classList.add("receipt_box");
+    const mainContainer = document.querySelector(".maincontainer");
+    mainContainer.append(this.receiptBox);
   }
 
-  #insertLogo() {
+  #insertReceiptItems() {
+    this.receipt.getReceipt().forEach((line) => {
+      const receiptEl = document.createElement("div");
+      receiptEl.innerHTML = `<div class="line">${line}</div>`;
+      this.receiptBox.append(receiptEl);
+    });
+  }
+
+  #insertReceiptLogo() {
     const logo = document.createElement("img");
     logo.src = "./public/logo.png";
     logo.id = "logo";
     document.getElementById("receipt_box").appendChild(logo);
   }
-  #insertFooter() {
+
+  #insertReceiptFooter() {
     const footer = document.createElement("img");
     footer.src = "./public/footer.png";
     footer.id = "footer";
     document.getElementById("receipt_box").appendChild(footer);
+  }
+
+  #clearOrder() {
+    this.orderContainer
+      .querySelectorAll("div")
+      .forEach((item) => item.remove());
   }
 }
 

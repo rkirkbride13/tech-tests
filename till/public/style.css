@@ -88,7 +88,7 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  margin-right: 2.5%;
 }
 
 .receipt_box {
