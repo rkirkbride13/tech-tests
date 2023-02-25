@@ -1,7 +1,7 @@
 ## Coffee Shop Till ☕ 
 ### Overview:
 
-Here I have created a mock till for use in my dream coffee shop. The application can create a menu from, from which items can be added to an order. A name should be assigned to the order before it is submitted, and then on submission a receipt is printed with the name, date and breakdown of the order items and costs.
+Here I have created a mock till for use in my dream coffee shop. The application creates a menu, from which items can be added to an order. A name should be assigned to the order before it is submitted, and then on submission a receipt is printed with the name, date and breakdown of the order items and costs.
 
 This was an exercise in object oriented programming in Javascript. The user interface was created using HTML and CSS and the code was test-driven using the Jest framework.
 
@@ -37,4 +37,4 @@ Your receipt must calculate and show the correct amount of tax (in this shop's c
 ### Improvements:  
 
 - Add functionality to take payment and calculate correct change.
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+- Add functionality to handle discounts - e.g a 5% discount on orders over $50, and a 10% muffin discount.
