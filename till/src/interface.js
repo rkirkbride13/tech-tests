@@ -19,7 +19,9 @@ class Interface {
 
   enterName() {
     document.querySelector("#name-button").addEventListener("click", () => {
-      this.order.setName(document.querySelector("#name-input").value);
+      if (document.querySelector("#name-input").value) {
+        this.order.setName(document.querySelector("#name-input").value);
+      }
     });
   }
 

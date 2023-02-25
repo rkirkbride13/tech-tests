@@ -42,7 +42,7 @@ describe(Interface, () => {
     textInputEl.value = "Robbie";
     buttonEl.click();
 
-    expect(order.getName()).toBe("Robbie");
+    expect(order.getName()).toBe("Name: Robbie");
   });
 
   it("can add items to the order by clicking menu", () => {
