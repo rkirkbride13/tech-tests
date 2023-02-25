@@ -136,7 +136,7 @@ describe("order can be formatted into a receipt", () => {
     const receipt = new Receipt()
     receipt.addOrder(order)
     
-    expect(receipt.printReceipt()).toContain("27/01/2023, 10:36:00\n")
+    expect(receipt.printReceipt()).toContain("1/27/2023, 10:36:00 AM\n")
     expect(receipt.printReceipt()).toContain("Jane\n")
     expect(receipt.printReceipt()).toContain("Cafe Latte              2 x 4.75\nBlueberry Muffin        1 x 4.05\nChoc Mudcake            1 x 6.40\n")
     expect(receipt.printReceipt()).toContain("Tax                     $1.72")

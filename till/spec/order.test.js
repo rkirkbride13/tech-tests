@@ -109,7 +109,7 @@ describe('Order', () => {
     const order = new Order()
     order.addItem(mockItem1)
 
-    expect(order.getDate()).toBe('27/01/2023, 10:36:00')
+    expect(order.getDate()).toBe('1/27/2023, 10:36:00 AM')
   })
 
 });

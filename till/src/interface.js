@@ -13,8 +13,53 @@ class Interface {
   execute() {
     this.#displayMenu();
     this.enterName();
-    this.setButtons();
+    this.createMenu();
     this.resetOrder();
+  }
+
+  enterName() {
+    document.querySelector("#name-button").addEventListener("click", () => {
+      this.order.setName(document.querySelector("#name-input").value);
+    });
+  }
+
+  createMenu() {
+    const wrapper = document.getElementById("wrapper");
+    wrapper.addEventListener("click", (event) => {
+      const isButton = event.target.nodeName === "BUTTON";
+      if (!isButton) {
+        return;
+      }
+      let item = new Item();
+      item.setName(`${event.target.id}`);
+      this.order.addItem(item);
+      this.displayOrder();
+    });
+  }
+
+  displayReceipt() {
+    this.receipt.addOrder(this.order);
+    this.receipt.compileReceipt();
+    const receiptBox = document.querySelector("#receipt_box");
+    this.#insertLogo()
+    this.receipt.getReceipt().forEach((line) => {
+      const receiptEl = document.createElement("div");
+      receiptEl.innerHTML = `
+          <div class="line">
+          ${line}
+          </div>
+        `;
+      receiptBox.append(receiptEl);
+    });
+    this.#insertFooter()
+  }
+
+  displayOrder() {
+    this.#clearOrder();
+    this.#displayItems();
+    this.#displayTax();
+    this.#displayTotal();
+    this.#displaySubmitOrder();
   }
 
   resetOrder() {
@@ -29,50 +74,19 @@ class Interface {
     });
   }
 
-  enterName() {
-    document.querySelector("#name-button").addEventListener("click", () => {
-      this.order.setName(document.querySelector("#name-input").value);
+  #displayMenu() {
+    let rowNum = 1;
+    Object.keys(this.menu).forEach((key) => {
+      let row = this.menuTable.insertRow(rowNum);
+      let cell1 = row.insertCell(0);
+      let cell2 = row.insertCell(1);
+      cell1.innerHTML = `<button id="${key}">${key}</button>`;
+      cell2.innerHTML = `${this.menu[key]}`;
+      rowNum++;
     });
   }
 
-  setButtons() {
-    const wrapper = document.getElementById("wrapper");
-    wrapper.addEventListener("click", (event) => {
-      const isButton = event.target.nodeName === "BUTTON";
-      if (!isButton) {
-        return;
-      }
-      let item = new Item();
-      item.setName(`${event.target.id}`);
-      this.order.addItem(item);
-      this.#clearOrder();
-      this.displayOrder();
-    });
-  }
-
-  displayReceipt() {
-    this.receipt.addOrder(this.order);
-    this.receipt.compileReceipt();
-    const receiptBox = document.querySelector("#receipt_box");
-    this.receipt.getReceipt().forEach((line) => {
-      const receiptEl = document.createElement("div");
-      receiptEl.innerHTML = `
-          <div class="line">
-          ${line}
-          </div>
-        `;
-      receiptBox.append(receiptEl);
-    });
-  }
-
-  displayOrder() {
-    this.displayItems();
-    this.displayTax();
-    this.displayTotal();
-    this.displaySubmit();
-  }
-
-  displayItems() {
+  #displayItems() {
     this.receipt.clearReceipt();
     this.receipt.addOrder(this.order);
     this.receipt.formatItems();
@@ -87,7 +101,7 @@ class Interface {
     });
   }
 
-  displayTax() {
+  #displayTax() {
     const taxEl = document.createElement("div");
     taxEl.innerHTML = `
     <div class="tax">
@@ -96,7 +110,7 @@ class Interface {
     this.orderContainer.append(taxEl);
   }
 
-  displayTotal() {
+  #displayTotal() {
     const totalEl = document.createElement("div");
     totalEl.innerHTML = `
     <div class="total">
@@ -105,7 +119,7 @@ class Interface {
     this.orderContainer.append(totalEl);
   }
 
-  displaySubmit() {
+  #displaySubmitOrder() {
     if (!this.submitOrder) {
       this.submitOrder = document.createElement("div");
       this.submitOrder.innerHTML = `
@@ -120,22 +134,21 @@ class Interface {
     }
   }
 
-  #displayMenu() {
-    let rowNum = 1;
-    Object.keys(this.menu).forEach((key) => {
-      let row = this.menuTable.insertRow(rowNum);
-      let cell1 = row.insertCell(0);
-      let cell2 = row.insertCell(1);
-      cell1.innerHTML = `<button id="${key}">${key}</button>`;
-      cell2.innerHTML = `£${this.menu[key]}`;
-      rowNum++;
-    });
-  }
-
   #clearOrder() {
     this.orderContainer
       .querySelectorAll("div")
       .forEach((item) => item.remove());
+  }
+
+  #insertLogo() {
+    const logo = document.createElement("img")
+    logo.src = './public/logo.png'
+    document.getElementById("receipt_box").appendChild(logo);
+  }
+  #insertFooter() {
+    const footer = document.createElement("img")
+    footer.src = './public/footer.png'
+    document.getElementById("receipt_box").appendChild(footer);
   }
 }
 

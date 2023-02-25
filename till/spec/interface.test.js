@@ -33,7 +33,7 @@ describe(Interface, () => {
     expect(rows.length).toBe(16);
     expect(cols.length).toBe(2);
     expect(item.textContent).toBe("Cafe Latte");
-    expect(price.textContent).toBe("£4.75");
+    expect(price.textContent).toBe("4.75");
   });
 
   it("can add a name to the order using the input", () => {

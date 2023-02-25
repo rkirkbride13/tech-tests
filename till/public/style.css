@@ -1,14 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&effect=fire-animation");
+@import url('https://fonts.googleapis.com/css2?family=Mynerve&family=Inconsolata:wght@200&display=swap');
+
+html { 
+  background: url("./bg-bean.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 :root {
-  --prim: rgb(209, 117, 68);
-  --sec: rgb(70, 64, 61);
-  /* --sec: rgb(220, 136, 91); */
+  --prim: rgb(58, 59, 53);
+  --sec: rgb(37, 36, 36);
 }
 
 body {
   font-size: 13px;
-  background-color: var(--prim);
 }
 
 h1 {
@@ -19,18 +26,15 @@ h1 {
   text-align: center;
 }
 
-h3 {
-  color: #ffffff;
-}
-
 .maincontainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
 button {
+  font-family: 'Mynerve', cursive;
   color: #fff;
   background-color: var(--sec);
   border-color:  var(--sec);
@@ -41,7 +45,7 @@ button {
 button.submit {
   color: #fff;
   border-color: #fff;
-  background-color: rgb(213, 188, 175);
+  background-color: var(--sec);
   width: 5rem;
 }
 
@@ -67,9 +71,9 @@ table.menu th {
 
 .order {
 text-indent: 3%;
-color: rgb(87, 59, 34);
+color: rgb(58, 59, 53);
 background-color: var(--sec);
-background-color: rgb(255, 229, 215);
+background-color: rgb(255, 255, 255);
 min-width: 250px;
 width: 12.5vw;
 }
@@ -79,6 +83,7 @@ font-weight: bold;
 }
 
 .order_box {
+  font-family: 'Mynerve', cursive;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,10 +92,11 @@ font-weight: bold;
 }
 
 .receipt_box {
+  font-family: 'Inconsolata', monospace;
   text-indent: 3%;
-  color: rgb(87, 59, 34);
+  color: rgb(58, 59, 53);
   background-color: var(--sec);
-  background-color: rgb(255, 229, 215);
+  background-color: rgb(255, 255, 255);
   min-width: 250px;
   width: 12.5vw;
 }
@@ -98,7 +104,7 @@ font-weight: bold;
 button.submitOrder {
   color: #fff;
   border-color: #fff;
-  background-color: rgb(213, 188, 175);
+  background-color: var(--sec);
   min-width: 250px;
   width: 12.5vw;
 }
