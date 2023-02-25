@@ -40,7 +40,11 @@ class Interface {
   displayReceipt() {
     this.receipt.addOrder(this.order);
     this.receipt.compileReceipt();
-    const receiptBox = document.querySelector("#receipt_box");
+    const receiptBox = document.createElement("div");
+    receiptBox.id = "receipt_box";
+    receiptBox.classList.add("receipt_box");
+    const mainContainer = document.querySelector(".maincontainer");
+    mainContainer.append(receiptBox);
     this.#insertLogo();
     this.receipt.getReceipt().forEach((line) => {
       const receiptEl = document.createElement("div");
@@ -63,10 +67,8 @@ class Interface {
       this.order.clearOrder();
       this.#clearOrder();
       document.querySelector("#submitOrder").remove();
-      if (document.querySelector("#receipt_box").querySelector("img")) {
-        document.querySelector("#logo").remove();
-        document.querySelectorAll(".line").forEach((item) => item.remove());
-        document.querySelector("#footer").remove();
+      if (document.querySelector("#receipt_box")) {
+        document.querySelector("#receipt_box").remove();
       }
       this.submitOrder = false;
     });
