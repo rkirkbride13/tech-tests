@@ -26,6 +26,7 @@ Your receipt must calculate and show the correct amount of tax (in this shop's c
     $ git clone https://github.com/rkirkbride13/tech-tests.git
     $ cd till
     $ npm install
+    $ npm run build
     $ open index.html
 
 **To run the test suite**
