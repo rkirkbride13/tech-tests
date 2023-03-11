@@ -47,8 +47,7 @@ class Receipt {
 
   printReceipt() {
     this.compileReceipt();
-    const receipt = this.receipt.join("");
-    return receipt;
+    return this.receipt.join("");
   }
 }
 
