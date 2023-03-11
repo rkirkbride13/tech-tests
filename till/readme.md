@@ -5,7 +5,7 @@ Here I have created a mock till for use in my dream coffee shop. The application
 
 This was an exercise in object oriented programming in Javascript. The user interface was created using HTML and CSS and the code was test-driven using the Jest framework.
 
-This was orignally a mock tech test that I then decided to get more creative with.
+This was orignally a mock tech test that I then decided to get more creative with. Feel free to change the items and prices on the menu to suit your needs!
 
 ### Original brief
 
@@ -26,6 +26,7 @@ Your receipt must calculate and show the correct amount of tax (in this shop's c
     $ git clone https://github.com/rkirkbride13/tech-tests.git
     $ cd till
     $ npm install
+    $ npm run build
     $ open index.html
 
 **To run the test suite**
