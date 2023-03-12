@@ -5,7 +5,9 @@ Here I have created a mock till for use in my dream coffee shop. The application
 
 This was an exercise in object oriented programming in Javascript. The user interface was created using HTML and CSS and the code was test-driven using the Jest framework.
 
-This was orignally a mock tech test that I then decided to get more creative with. Feel free to change the items and prices on the menu to suit your needs!
+This was orignally a mock tech test that I then decided to get more creative with. Try it out [here!](https://till.onrender.com/)
+
+If you clone the repository feel free to change the items and prices on the inventory to suit your needs!
 
 ### Original brief
 
